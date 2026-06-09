@@ -65,6 +65,7 @@ type
                 Off_Color :Tcolor;
                 Value:integer;
                 OldValue:integer;
+                Name:String;
                 Paint:procedure of object;
                 function Status: Tcolor;
         end;
@@ -152,6 +153,9 @@ type
     Shape28: TShape;
     Shape29: TShape;
     Shape3: TShape;
+    Shape30: TShape;
+    Shape31: TShape;
+    Shape32: TShape;
     Shape4: TShape;
     Shape5: TShape;
     Shape6: TShape;
@@ -179,6 +183,7 @@ type
     procedure Shape22Paint(Sender: TObject);
     procedure Shape23Paint(Sender: TObject);
     procedure Shape24Paint(Sender: TObject);
+    procedure Shape32Paint(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
 
@@ -195,6 +200,8 @@ type
     LED_UnwindExitRailLockOS:Valve_;
     LED_UnwindExitRailUnlockDS:Valve_;
     LED_UnwindExitRailLockDS:Valve_;
+
+    LED_UnwindCompleteChuck:Valve_;
 
     StartTime, ElapsedTime: DWord;
     Exit_:boolean;
@@ -336,6 +343,7 @@ begin
   Form1.UnwindSafetyUnlock.Pen_Color:=clBlack;
   Form1.UnwindSafetyUnlock.On_Color:=clGreen;
   Form1.UnwindSafetyUnlock.Off_Color:=clSilver;
+  Form1.UnwindSafetyUnlock.Name:='Q48.2 : UnwindSafetyUnlock';
 
   Form1.UnwindSafetyLock.Shape_:=ValveShape.VMedium;
   Form1.UnwindSafetyLock.Width_:=ValveShape.VMedium_Width;
@@ -345,6 +353,7 @@ begin
   Form1.UnwindSafetyLock.Pen_Color:=clBlack;
   Form1.UnwindSafetyLock.On_Color:=clGreen;
   Form1.UnwindSafetyLock.Off_Color:=clSilver;
+  Form1.UnwindSafetyLock.Name:='Q48.3 : UnwindSafetyLock';
 
   Form1.UnwindExitRailUnlock.Shape_:=ValveShape.VMedium;
   Form1.UnwindExitRailUnlock.Width_:=ValveShape.VMedium_Width;
@@ -354,6 +363,7 @@ begin
   Form1.UnwindExitRailUnlock.Pen_Color:=clBlack;
   Form1.UnwindExitRailUnlock.On_Color:=clGreen;
   Form1.UnwindExitRailUnlock.Off_Color:=clSilver;
+  Form1.UnwindExitRailUnlock.Name:='Q48.7 : UnwindExitRailUnlock';
 
   Form1.UnwindExitRailLock.Shape_:=ValveShape.VMedium;
   Form1.UnwindExitRailLock.Width_:=ValveShape.VMedium_Width;
@@ -363,6 +373,7 @@ begin
   Form1.UnwindExitRailLock.Pen_Color:=clBlack;
   Form1.UnwindExitRailLock.On_Color:=clGreen;
   Form1.UnwindExitRailLock.Off_Color:=clSilver;
+  Form1.UnwindExitRailLock.Name:='Q48.6 : UnwindExitRailLock';
 
   Form1.LED_UnwindSafetyUnlock.Shape_:=LEDShape.Medium;
   Form1.LED_UnwindSafetyUnlock.Width_:=LEDShape.Medium_Width;
@@ -372,6 +383,7 @@ begin
   Form1.LED_UnwindSafetyUnlock.Pen_Color:=clBlack;
   Form1.LED_UnwindSafetyUnlock.On_Color:=clGreen;
   Form1.LED_UnwindSafetyUnlock.Off_Color:=clSilver;
+  Form1.LED_UnwindSafetyUnlock.Name:='I15.5 : LED_UnwindSafetyUnlock';
 
   Form1.LED_UnwindSafetyLock.Shape_:=LEDShape.Medium;
   Form1.LED_UnwindSafetyLock.Width_:=LEDShape.Medium_Width;
@@ -381,6 +393,7 @@ begin
   Form1.LED_UnwindSafetyLock.Pen_Color:=clBlack;
   Form1.LED_UnwindSafetyLock.On_Color:=clGreen;
   Form1.LED_UnwindSafetyLock.Off_Color:=clSilver;
+  Form1.LED_UnwindSafetyLock.Name:='I15.4 : LED_UnwindSafetyLock';
 
   Form1.LED_UnwindExitRailUnlockOS.Shape_:=LEDShape.Medium;
   Form1.LED_UnwindExitRailUnlockOS.Width_:=LEDShape.Medium_Width;
@@ -390,6 +403,7 @@ begin
   Form1.LED_UnwindExitRailUnlockOS.Pen_Color:=clBlack;
   Form1.LED_UnwindExitRailUnlockOS.On_Color:=clGreen;
   Form1.LED_UnwindExitRailUnlockOS.Off_Color:=clSilver;
+  Form1.LED_UnwindExitRailUnlockOS.Name:='I78.3 : LED_UnwindExitRailUnlockOS';
 
   Form1.LED_UnwindExitRailLockOS.Shape_:=LEDShape.Medium;
   Form1.LED_UnwindExitRailLockOS.Width_:=LEDShape.Medium_Width;
@@ -399,6 +413,7 @@ begin
   Form1.LED_UnwindExitRailLockOS.Pen_Color:=clBlack;
   Form1.LED_UnwindExitRailLockOS.On_Color:=clGreen;
   Form1.LED_UnwindExitRailLockOS.Off_Color:=clSilver;
+  Form1.LED_UnwindExitRailLockOS.Name:='I78.4 : LED_UnwindExitRailLockOS';
 
   Form1.LED_UnwindExitRailUnlockDS.Shape_:=LEDShape.Medium;
   Form1.LED_UnwindExitRailUnlockDS.Width_:=LEDShape.Medium_Width;
@@ -408,6 +423,7 @@ begin
   Form1.LED_UnwindExitRailUnlockDS.Pen_Color:=clBlack;
   Form1.LED_UnwindExitRailUnlockDS.On_Color:=clGreen;
   Form1.LED_UnwindExitRailUnlockDS.Off_Color:=clSilver;
+  Form1.LED_UnwindExitRailUnlockDS.Name:='I13.5 : LED_UnwindExitRailUnlockDS';
 
   Form1.LED_UnwindExitRailLockDS.Shape_:=LEDShape.Medium;
   Form1.LED_UnwindExitRailLockDS.Width_:=LEDShape.Medium_Width;
@@ -417,6 +433,18 @@ begin
   Form1.LED_UnwindExitRailLockDS.Pen_Color:=clBlack;
   Form1.LED_UnwindExitRailLockDS.On_Color:=clGreen;
   Form1.LED_UnwindExitRailLockDS.Off_Color:=clSilver;
+  Form1.LED_UnwindExitRailLockDS.Name:='I15.1 : LED_UnwindExitRailLockDS';
+
+  Form1.LED_UnwindCompleteChuck.Shape_:=LEDShape.Medium;
+  Form1.LED_UnwindCompleteChuck.Width_:=LEDShape.Medium_Width;
+  Form1.LED_UnwindCompleteChuck.Height_:=LEDShape.Medium_Height;
+  Form1.LED_UnwindCompleteChuck.Value:=0;
+  Form1.LED_UnwindCompleteChuck.OldValue:=Form1.LED_UnwindCompleteChuck.Value;
+  Form1.LED_UnwindCompleteChuck.Pen_Color:=clBlack;
+  Form1.LED_UnwindCompleteChuck.On_Color:=clGreen;
+  Form1.LED_UnwindCompleteChuck.Off_Color:=clSilver;
+  Form1.LED_UnwindCompleteChuck.Name:='I78.7 : LED_UnwindCompleteChuck';
+
 end;
 
 procedure TForm1.Log(const s : string);
@@ -619,40 +647,65 @@ begin
   Shape11.Pen.Color:=UnwindSafetyUnlock.Pen_Color;
   Shape11.Width:=UnwindSafetyUnlock.Width_;
   Shape11.Height:=UnwindSafetyUnlock.Height_;
+  Shape11.Hint:=UnwindSafetyUnlock.Name;
 
   Shape12.Pen.Color:=UnwindSafetyLock.Pen_Color;
   Shape12.Width:=UnwindSafetyLock.Width_;
   Shape12.Height:=UnwindSafetyLock.Height_;
+  Shape12.Hint:=UnwindSafetyLock.Name;
 
   Shape19.Pen.Color:=LED_UnwindSafetyUnlock.Pen_Color;
   Shape19.Width:=LED_UnwindSafetyUnlock.Width_;
   Shape19.Height:=LED_UnwindSafetyUnlock.Height_;
+  Shape19.Hint:=LED_UnwindSafetyUnlock.Name;
 
   Shape20.Pen.Color:=LED_UnwindSafetyLock.Pen_Color;
   Shape20.Width:=LED_UnwindSafetyLock.Width_;
   Shape20.Height:=LED_UnwindSafetyLock.Height_;
-
-  Shape19.Pen.Color:=LED_UnwindSafetyUnlock.Pen_Color;
-  Shape19.Width:=LED_UnwindSafetyUnlock.Width_;
-  Shape19.Height:=LED_UnwindSafetyUnlock.Height_;
-
-  Shape20.Pen.Color:=LED_UnwindSafetyLock.Pen_Color;
-  Shape20.Width:=LED_UnwindSafetyLock.Width_;
-  Shape20.Height:=LED_UnwindSafetyLock.Height_;
+  Shape20.Hint:=LED_UnwindSafetyLock.Name;
 
   Shape13.Pen.Color:=UnwindExitRailUnlock.Pen_Color;
   Shape13.Width:=UnwindExitRailUnlock.Width_;
   Shape13.Height:=UnwindExitRailUnlock.Height_;
+  Shape13.Hint:=UnwindExitRailUnlock.Name;
   Shape15.Pen.Color:=UnwindExitRailUnlock.Pen_Color;
   Shape15.Width:=UnwindExitRailUnlock.Width_;
   Shape15.Height:=UnwindExitRailUnlock.Height_;
+  Shape15.Hint:=UnwindExitRailUnlock.Name;
 
   Shape14.Pen.Color:=UnwindExitRailLock.Pen_Color;
   Shape14.Width:=UnwindExitRailLock.Width_;
   Shape14.Height:=UnwindExitRailLock.Height_;
+  Shape14.Hint:=UnwindExitRailLock.Name;
   Shape16.Pen.Color:=UnwindExitRailLock.Pen_Color;
   Shape16.Width:=UnwindExitRailLock.Width_;
   Shape16.Height:=UnwindExitRailLock.Height_;
+  Shape16.Hint:=UnwindExitRailLock.Name;
+
+  Shape23.Pen.Color:=LED_UnwindExitRailUnlockOS.Pen_Color;
+  Shape23.Width:=LED_UnwindExitRailUnlockOS.Width_;
+  Shape23.Height:=LED_UnwindExitRailUnlockOS.Height_;
+  Shape23.Hint:=LED_UnwindExitRailUnlockOS.Name;
+
+  Shape24.Pen.Color:=LED_UnwindExitRailLockOS.Pen_Color;
+  Shape24.Width:=LED_UnwindExitRailLockOS.Width_;
+  Shape24.Height:=LED_UnwindExitRailLockOS.Height_;
+  Shape24.Hint:=LED_UnwindExitRailLockOS.Name;
+
+  Shape21.Pen.Color:=LED_UnwindExitRailUnlockDS.Pen_Color;
+  Shape21.Width:=LED_UnwindExitRailUnlockDS.Width_;
+  Shape21.Height:=LED_UnwindExitRailUnlockDS.Height_;
+  Shape21.Hint:=LED_UnwindExitRailUnlockDS.Name;
+
+  Shape22.Pen.Color:=LED_UnwindExitRailLockDS.Pen_Color;
+  Shape22.Width:=LED_UnwindExitRailLockDS.Width_;
+  Shape22.Height:=LED_UnwindExitRailLockDS.Height_;
+  Shape22.Hint:=LED_UnwindExitRailLockDS.Name;
+
+  Shape32.Pen.Color:=LED_UnwindCompleteChuck.Pen_Color;
+  Shape32.Width:=LED_UnwindCompleteChuck.Width_;
+  Shape32.Height:=LED_UnwindCompleteChuck.Height_;
+  Shape32.Hint:=LED_UnwindCompleteChuck.Name;
 
   UnwindSafetyUnlock.Paint:=@Shape11.Paint;
   UnwindSafetyLock.Paint:=@Shape12.Paint;
@@ -665,6 +718,8 @@ begin
   LED_UnwindExitRailLockOS.Paint:=@Shape24.Paint;
   LED_UnwindExitRailUnlockDS.Paint:=@Shape21.Paint;
   LED_UnwindExitRailLockDS.Paint:=@Shape22.Paint;
+
+  LED_UnwindCompleteChuck.Paint:=@Shape32.Paint;
 
   Exit_:=false;
   StartTime := GetTickCount;
@@ -789,6 +844,12 @@ begin
   Shape24.Canvas.Polygon(LED_UnwindExitRailLockDS.Shape_);
 end;
 
+procedure TForm1.Shape32Paint(Sender: TObject);
+begin
+  Shape32.Canvas.Brush.Color := LED_UnwindCompleteChuck.Status;
+  Shape32.Canvas.Polygon(LED_UnwindCompleteChuck.Shape_);
+end;
+
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
   Timer1.Enabled:=false;
@@ -810,6 +871,8 @@ begin
       LED_UnwindExitRailUnlockDS.Value:=Round(I13_5.Value);
       LED_UnwindExitRailLockDS.Value:=Round(I15_1.Value);
 
+      LED_UnwindCompleteChuck.Value:=Round(I78_7.Value);
+
       //if (UnwindExitRailLock.Value=0) then UnwindExitRailLock.Value:=1 else UnwindExitRailLock.Value:=0;
       //if (Q48_7.Value=0) then Q48_7.Value:=1 else Q48_7.Value:=0;
 
@@ -824,6 +887,8 @@ begin
       LED_UnwindExitRailLockOS.Paint;
       LED_UnwindExitRailUnlockDS.Paint;
       LED_UnwindExitRailLockDS.Paint;
+
+      LED_UnwindCompleteChuck.Paint;
 
       StartTime := GetTickCount;
     end;

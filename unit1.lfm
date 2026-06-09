@@ -1,0 +1,824 @@
+object Form1: TForm1
+  Left = 279
+  Height = 598
+  Top = 104
+  Width = 1308
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = '09062026 Server 10.168.15.20'
+  ClientHeight = 598
+  ClientWidth = 1308
+  Position = poScreenCenter
+  LCLVersion = '4.6.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object PageControl1: TPageControl
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 598
+    Top = 0
+    Width = 1308
+    ActivePage = TabSheet2
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 1
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Communication'
+      ClientHeight = 572
+      ClientWidth = 1300
+      object Label3: TLabel
+        Left = 208
+        Height = 18
+        Top = 29
+        Width = 99
+        Caption = 'PLC IP address'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -15
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 208
+        Height = 18
+        Top = 55
+        Width = 55
+        Caption = 'PLC Port'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -15
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object Edit1: TEdit
+        Left = 309
+        Height = 26
+        Top = 24
+        Width = 112
+        Alignment = taCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -15
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 0
+        Text = '10.168.15.20'
+        OnEditingDone = Edit1EditingDone
+      end
+      object Edit2: TEdit
+        Left = 309
+        Height = 26
+        Top = 54
+        Width = 112
+        Alignment = taCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -15
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 1
+        Text = '102'
+        OnEditingDone = Edit2EditingDone
+      end
+      object Button1: TButton
+        Left = 429
+        Height = 58
+        Top = 24
+        Width = 116
+        Caption = 'Connect'
+        TabOrder = 2
+        OnClick = Button1Click
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Unwind'
+      ClientHeight = 572
+      ClientWidth = 1300
+      object Shape25: TShape
+        Left = 1104
+        Height = 16
+        Top = 552
+        Width = 112
+        Brush.Color = clGray
+      end
+      object Shape1: TShape
+        Left = 24
+        Height = 35
+        Top = 488
+        Width = 1074
+      end
+      object Shape2: TShape
+        Left = 1136
+        Height = 48
+        Top = 488
+        Width = 72
+        Shape = stRoundRect
+      end
+      object Shape3: TShape
+        Left = 1088
+        Height = 17
+        Top = 504
+        Width = 52
+      end
+      object Shape4: TShape
+        Left = 1224
+        Height = 48
+        Top = 520
+        Width = 72
+        Shape = stRoundRect
+      end
+      object Shape5: TShape
+        Left = 1204
+        Height = 17
+        Top = 532
+        Width = 20
+      end
+      object Shape6: TShape
+        Left = 1136
+        Height = 24
+        Top = 532
+        Width = 74
+      end
+      object Shape7: TShape
+        Left = 1016
+        Height = 141
+        Top = 339
+        Width = 55
+      end
+      object Shape8: TShape
+        Left = 1050
+        Height = 45
+        Top = 296
+        Width = 18
+      end
+      object Shape9: TShape
+        Left = 32
+        Height = 141
+        Top = 341
+        Width = 55
+      end
+      object Shape10: TShape
+        Left = 32
+        Height = 45
+        Top = 298
+        Width = 18
+      end
+      object Shape11: TShape
+        Left = 1144
+        Height = 24
+        Top = 456
+        Width = 16
+        Shape = stPolygon
+        OnPaint = Shape11Paint
+      end
+      object Shape12: TShape
+        Left = 1144
+        Height = 24
+        Top = 480
+        Width = 16
+        Shape = stPolygon
+        OnPaint = Shape12Paint
+      end
+      object Shape13: TShape
+        Left = 1048
+        Height = 24
+        Top = 448
+        Width = 16
+        Shape = stPolygon
+        OnPaint = Shape15Paint
+      end
+      object Shape14: TShape
+        Left = 1048
+        Height = 24
+        Top = 472
+        Width = 16
+        Shape = stPolygon
+        OnPaint = Shape16Paint
+      end
+      object Shape15: TShape
+        Left = 48
+        Height = 24
+        Top = 445
+        Width = 16
+        Shape = stPolygon
+        OnPaint = Shape15Paint
+      end
+      object Shape16: TShape
+        Left = 48
+        Height = 24
+        Top = 469
+        Width = 16
+        Shape = stPolygon
+        OnPaint = Shape16Paint
+      end
+      object Shape17: TShape
+        Left = 1096
+        Height = 24
+        Top = 480
+        Width = 34
+      end
+      object Shape18: TShape
+        Left = 1104
+        Height = 24
+        Top = 456
+        Width = 18
+      end
+      object Shape19: TShape
+        Left = 1128
+        Height = 24
+        Top = 456
+        Width = 12
+        Shape = stPolygon
+        OnPaint = Shape19Paint
+      end
+      object Shape20: TShape
+        Left = 1128
+        Height = 24
+        Top = 480
+        Width = 12
+        Shape = stPolygon
+        OnPaint = Shape20Paint
+      end
+      object Shape21: TShape
+        Left = 72
+        Height = 24
+        Top = 445
+        Width = 12
+        Shape = stPolygon
+        OnPaint = Shape21Paint
+      end
+      object Shape22: TShape
+        Left = 72
+        Height = 24
+        Top = 469
+        Width = 12
+        Shape = stPolygon
+        OnPaint = Shape22Paint
+      end
+      object Shape23: TShape
+        Left = 1024
+        Height = 24
+        Top = 448
+        Width = 12
+        Shape = stPolygon
+        OnPaint = Shape23Paint
+      end
+      object Shape24: TShape
+        Left = 1024
+        Height = 24
+        Top = 472
+        Width = 12
+        Shape = stPolygon
+        OnPaint = Shape24Paint
+      end
+      object Label1: TLabel
+        Left = 1049
+        Height = 33
+        Top = 192
+        Width = 53
+        Caption = 'D.S.'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -27
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 31
+        Height = 33
+        Top = 192
+        Width = 54
+        Caption = 'O.S.'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -27
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object HMIEdit1: THMIEdit
+        Left = 1129
+        Height = 19
+        Top = 424
+        Width = 79
+        Alignment = taCenter
+        BorderStyle = bsNone
+        Color = clNone
+        Enabled = True
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 0
+        NumberFormat = '#0.0'
+        PLCTag = DB211_DBD212
+        EnableMinValue = False
+        EnableMaxValue = False
+      end
+      object HMIEdit2: THMIEdit
+        Left = 1216
+        Height = 19
+        Top = 496
+        Width = 79
+        Alignment = taCenter
+        BorderStyle = bsNone
+        Color = clNone
+        Enabled = True
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 1
+        NumberFormat = '#0.0'
+        PLCTag = DB211_DBD216
+        EnableMinValue = False
+        EnableMaxValue = False
+      end
+      object Shape26: TShape
+        Left = 8
+        Height = 16
+        Top = 552
+        Width = 112
+        Brush.Color = clGray
+      end
+      object Shape27: TShape
+        Left = 24
+        Height = 24
+        Top = 528
+        Width = 74
+      end
+      object Shape28: TShape
+        Left = 576
+        Height = 56
+        Top = 480
+        Width = 18
+      end
+      object Shape29: TShape
+        Left = 560
+        Height = 56
+        Top = 480
+        Width = 18
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Debug'
+      ClientHeight = 572
+      ClientWidth = 1300
+      object Memo2: TMemo
+        AnchorSideTop.Control = TabSheet3
+        AnchorSideBottom.Control = TabSheet3
+        AnchorSideBottom.Side = asrBottom
+        Left = 90
+        Height = 572
+        Top = 0
+        Width = 436
+        Anchors = [akTop, akLeft, akBottom]
+        ScrollBars = ssAutoBoth
+        TabOrder = 0
+      end
+    end
+  end
+  object Timer1: TTimer
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 640
+    Top = 32
+  end
+  object TCP_UDPPort1: TTCP_UDPPort
+    Host = '10.168.15.20'
+    ExclusiveDevice = False
+    Left = 704
+    Top = 40
+  end
+  object ISOTCPDriver1: TISOTCPDriver
+    CommunicationPort = TCP_UDPPort1
+    ForcePDUSize = pduAuto
+    ConnectionWay = ISOTCP
+    ReadOnly = False
+    Left = 744
+    Top = 47
+  end
+  object QB_48: TPLCBlock
+    TagGUID = '{CF65BA97-4591-406B-9847-80C5538A9861}'
+    PLCRack = 0
+    PLCSlot = 0
+    PLCStation = 2
+    MemFile_DB = 0
+    MemAddress = 48
+    MemSubElement = 0
+    MemReadFunction = 2
+    MemWriteFunction = 0
+    ProtocolDriver = ISOTCPDriver1
+    UpdateTime = 200
+    LongAddress = ''
+    Size = 1
+    TagType = pttByte
+  end
+  object QB48: TPLCBlockElement
+    TagGUID = '{92933299-B78F-49AB-A984-3FEEB33165E4}'
+    PLCBlock = QB_48
+    Index = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_0: TTagBit
+    TagGUID = '{59A5374A-F8B9-4EF7-A4BF-2452906BD319}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 0
+    EndBit = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_1: TTagBit
+    TagGUID = '{FACAD10C-A785-497B-8A68-73F88F347930}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 1
+    EndBit = 1
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_2: TTagBit
+    TagGUID = '{76FE86A3-1B54-45DF-8F7B-672B98B3A24E}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 2
+    EndBit = 2
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_3: TTagBit
+    TagGUID = '{DBF53783-5C8E-4857-A734-19911E28B6F5}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 3
+    EndBit = 3
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_4: TTagBit
+    TagGUID = '{BD18CA95-F83E-4373-B933-142BA5B992D7}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 4
+    EndBit = 4
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_5: TTagBit
+    TagGUID = '{F19A0E40-938D-4AC8-8FDB-A19152F7B204}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 5
+    EndBit = 5
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_6: TTagBit
+    TagGUID = '{96E4E10A-F844-4AA8-90CD-73A62C99CC26}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 6
+    EndBit = 6
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object Q48_7: TTagBit
+    TagGUID = '{6A4FE331-74FF-491B-8E30-B1FF0E19CE39}'
+    PLCTag = QB48
+    UseRawValue = False
+    StartBit = 7
+    EndBit = 7
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object IB_13: TPLCBlock
+    TagGUID = '{438F78AD-DFDA-4847-BEF6-F73612442656}'
+    PLCRack = 0
+    PLCSlot = 0
+    PLCStation = 2
+    MemFile_DB = 0
+    MemAddress = 13
+    MemSubElement = 0
+    MemReadFunction = 1
+    MemWriteFunction = 0
+    ProtocolDriver = ISOTCPDriver1
+    UpdateTime = 200
+    LongAddress = ''
+    Size = 1
+    TagType = pttByte
+  end
+  object IB13: TPLCBlockElement
+    TagGUID = '{BC7F92E5-58A2-41CC-A256-05CA21D24306}'
+    PLCBlock = IB_13
+    Index = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_0: TTagBit
+    TagGUID = '{3111A720-718D-4BFF-8506-6B82F8F896B9}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 0
+    EndBit = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_1: TTagBit
+    TagGUID = '{78719769-5909-409D-9DB3-E8E3B14117DE}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 1
+    EndBit = 1
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_2: TTagBit
+    TagGUID = '{29479597-CEB1-4683-AEBC-29596143D1CB}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 2
+    EndBit = 2
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_3: TTagBit
+    TagGUID = '{4A24470B-43DF-4D6B-A1CA-A6813191C2A8}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 3
+    EndBit = 3
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_4: TTagBit
+    TagGUID = '{6DDB1BBC-1EF2-4AAE-BC57-831CDE853A98}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 4
+    EndBit = 4
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_5: TTagBit
+    TagGUID = '{4386E2BE-DB16-4D99-B6FC-042BAFC71B77}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 5
+    EndBit = 5
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_6: TTagBit
+    TagGUID = '{752F01A2-AF81-44AD-A11A-A1562B38190E}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 6
+    EndBit = 6
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I13_7: TTagBit
+    TagGUID = '{896C37BB-A818-45C3-BB00-7C34CBE3187D}'
+    PLCTag = IB13
+    UseRawValue = False
+    StartBit = 7
+    EndBit = 7
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object IB_15: TPLCBlock
+    TagGUID = '{37411E55-794F-449F-916F-4D694DFD7D14}'
+    PLCRack = 0
+    PLCSlot = 0
+    PLCStation = 2
+    MemFile_DB = 0
+    MemAddress = 15
+    MemSubElement = 0
+    MemReadFunction = 1
+    MemWriteFunction = 0
+    ProtocolDriver = ISOTCPDriver1
+    UpdateTime = 200
+    LongAddress = ''
+    Size = 1
+    TagType = pttByte
+  end
+  object IB15: TPLCBlockElement
+    TagGUID = '{FF0B0BBA-9EEB-4D1D-B0B7-A3A8915F233B}'
+    PLCBlock = IB_15
+    Index = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_0: TTagBit
+    TagGUID = '{5F61B604-5329-4335-9A09-ECA290FE85AC}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 0
+    EndBit = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_1: TTagBit
+    TagGUID = '{FCDB4C97-9296-4588-BB06-A06F5BD860AD}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 1
+    EndBit = 1
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_2: TTagBit
+    TagGUID = '{2D89EAF6-F186-4D6D-A7F9-5E690FBBEA6C}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 2
+    EndBit = 2
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_3: TTagBit
+    TagGUID = '{4ABCB8F9-D696-4B4E-B642-D003CB97F956}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 3
+    EndBit = 3
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_4: TTagBit
+    TagGUID = '{6D63A64D-BCC3-40CF-805E-CF67A4895B0C}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 4
+    EndBit = 4
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_5: TTagBit
+    TagGUID = '{10E67125-6F4C-41FC-B9F0-0E696359BD44}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 5
+    EndBit = 5
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_6: TTagBit
+    TagGUID = '{85797994-D123-4C18-8058-3F673B6A5488}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 6
+    EndBit = 6
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I15_7: TTagBit
+    TagGUID = '{15B09C0E-06C0-476D-8C85-36627A5F67C8}'
+    PLCTag = IB15
+    UseRawValue = False
+    StartBit = 7
+    EndBit = 7
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object IB_78: TPLCBlock
+    TagGUID = '{120FDD9F-D2A8-4987-BEEF-E42CAB20E4DB}'
+    PLCRack = 0
+    PLCSlot = 0
+    PLCStation = 2
+    MemFile_DB = 0
+    MemAddress = 78
+    MemSubElement = 0
+    MemReadFunction = 1
+    MemWriteFunction = 0
+    ProtocolDriver = ISOTCPDriver1
+    UpdateTime = 200
+    LongAddress = ''
+    Size = 1
+    TagType = pttByte
+  end
+  object IB78: TPLCBlockElement
+    TagGUID = '{FAE45D76-BA6C-4959-8BB5-AB0AB08B8E57}'
+    PLCBlock = IB_78
+    Index = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_0: TTagBit
+    TagGUID = '{3CB179C6-73C0-4B20-8718-6AEC156014C0}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 0
+    EndBit = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_1: TTagBit
+    TagGUID = '{4DCE6CD2-FD4F-46BB-A82A-15CBC1E1F47F}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 1
+    EndBit = 1
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_2: TTagBit
+    TagGUID = '{5BD0C678-FE16-4658-9B2B-9E8DA5B4D3C4}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 2
+    EndBit = 2
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_3: TTagBit
+    TagGUID = '{0F9565A4-94F6-4E69-AA99-68CB8CD74571}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 3
+    EndBit = 3
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_4: TTagBit
+    TagGUID = '{868A6894-3796-4B04-8569-EA7A498C5CE8}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 4
+    EndBit = 4
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_5: TTagBit
+    TagGUID = '{F7C85F4A-7408-4417-B991-6A67C42BB75A}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 5
+    EndBit = 5
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_6: TTagBit
+    TagGUID = '{8E726DCD-3346-4C3A-9904-95855555F1C8}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 6
+    EndBit = 6
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object I78_7: TTagBit
+    TagGUID = '{3549D2E6-1AF5-4251-A6F8-994B2429901F}'
+    PLCTag = IB78
+    UseRawValue = False
+    StartBit = 7
+    EndBit = 7
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object DB_211: TPLCBlock
+    TagGUID = '{9BA30554-F9E9-4378-A98E-A0BE79BD0779}'
+    PLCRack = 0
+    PLCSlot = 0
+    PLCStation = 2
+    MemFile_DB = 211
+    MemAddress = 212
+    MemSubElement = 0
+    MemReadFunction = 4
+    MemWriteFunction = 0
+    ProtocolDriver = ISOTCPDriver1
+    UpdateTime = 200
+    LongAddress = ''
+    Size = 2
+    TagType = pttLongInt
+    SwapBytes = True
+    SwapWords = True
+  end
+  object DB211_DBD212: TPLCBlockElement
+    TagGUID = '{50267815-C4EB-4D9C-AEB6-2461F4B0F259}'
+    PLCBlock = DB_211
+    Index = 0
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+  object DB211_DBD216: TPLCBlockElement
+    TagGUID = '{4895CA77-73D7-47D5-AEB4-43120A597C04}'
+    PLCBlock = DB_211
+    Index = 1
+    EnableMaxValue = False
+    EnableMinValue = False
+  end
+end

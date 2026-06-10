@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 279
+  Left = 415
   Height = 598
-  Top = 104
+  Top = 80
   Width = 1308
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -100,6 +100,17 @@ object Form1: TForm1
       Caption = 'Unwind'
       ClientHeight = 572
       ClientWidth = 1300
+      object Shape33: TShape
+        Left = 32
+        Height = 289
+        Top = 247
+        Width = 1264
+        ParentShowHint = False
+        Shape = stPolygon
+        ShowHint = True
+        OnMouseMove = Shape33MouseMove
+        OnPaint = Shape15Paint
+      end
       object Shape3: TShape
         Left = 1088
         Height = 17
@@ -274,7 +285,8 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape21MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape21Paint
       end
       object Shape22: TShape
@@ -284,7 +296,8 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape22MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape22Paint
       end
       object Shape23: TShape
@@ -419,8 +432,18 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape32MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape32Paint
+      end
+      object Button2: TButton
+        Left = 200
+        Height = 25
+        Top = 38
+        Width = 100
+        Caption = 'Button2'
+        TabOrder = 2
+        OnClick = Button2Click
       end
     end
     object TabSheet3: TTabSheet

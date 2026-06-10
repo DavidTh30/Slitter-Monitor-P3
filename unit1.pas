@@ -76,6 +76,7 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     DB211_DBD212: TPLCBlockElement;
     DB211_DBD216: TPLCBlockElement;
     DB_211: TPLCBlock;
@@ -156,6 +157,7 @@ type
     Shape30: TShape;
     Shape31: TShape;
     Shape32: TShape;
+    Shape33: TShape;
     Shape4: TShape;
     Shape5: TShape;
     Shape6: TShape;
@@ -168,6 +170,7 @@ type
     TCP_UDPPort1: TTCP_UDPPort;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure Edit1EditingDone(Sender: TObject);
     procedure Edit2EditingDone(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -179,11 +182,17 @@ type
     procedure Shape16Paint(Sender: TObject);
     procedure Shape19Paint(Sender: TObject);
     procedure Shape20Paint(Sender: TObject);
+    procedure Shape21MouseEnter(Sender: TObject);
+    procedure Shape21MouseLeave(Sender: TObject);
     procedure Shape21Paint(Sender: TObject);
+    procedure Shape22MouseEnter(Sender: TObject);
     procedure Shape22Paint(Sender: TObject);
     procedure Shape23Paint(Sender: TObject);
     procedure Shape24Paint(Sender: TObject);
+    procedure Shape32MouseEnter(Sender: TObject);
     procedure Shape32Paint(Sender: TObject);
+    procedure Shape33MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
     procedure Timer1Timer(Sender: TObject);
   private
 
@@ -219,7 +228,12 @@ var
   Form1: TForm1;
   ValveShape: ValveShape_;
   LEDShape: LEDShape_;
-
+  X_:integer;
+  Y_:integer;
+  ToolTip_Shape01: array of TPoint;
+  ToolTip_Shape02: array of TPoint;
+  ToolTip_StringXY:Tpoint;
+  ToolTip_String:string;
 implementation
 
 {$R *.lfm}
@@ -644,6 +658,18 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   InitShapeValve();
 
+  SetLength(ToolTip_Shape01, 4);
+  SetLength(ToolTip_Shape02, 3);
+  ToolTip_Shape01[0] := Point(0, 0);
+  ToolTip_Shape01[1] := Point(0, 0);
+  ToolTip_Shape01[2] := Point(0, 0);
+  ToolTip_Shape01[3] := Point(0, 0);
+  ToolTip_Shape02[0] := Point(0, 0);
+  ToolTip_Shape02[1] := Point(0, 0);
+  ToolTip_Shape02[2] := Point(0, 0);
+  ToolTip_StringXY:=Point(0, 0);
+  ToolTip_String:='';
+
   Shape11.Pen.Color:=UnwindSafetyUnlock.Pen_Color;
   Shape11.Width:=UnwindSafetyUnlock.Width_;
   Shape11.Height:=UnwindSafetyUnlock.Height_;
@@ -682,25 +708,25 @@ begin
   Shape16.Height:=UnwindExitRailLock.Height_;
   Shape16.Hint:=UnwindExitRailLock.Name;
 
-  Shape23.Pen.Color:=LED_UnwindExitRailUnlockOS.Pen_Color;
-  Shape23.Width:=LED_UnwindExitRailUnlockOS.Width_;
-  Shape23.Height:=LED_UnwindExitRailUnlockOS.Height_;
-  Shape23.Hint:=LED_UnwindExitRailUnlockOS.Name;
+  Shape21.Pen.Color:=LED_UnwindExitRailUnlockOS.Pen_Color;
+  Shape21.Width:=LED_UnwindExitRailUnlockOS.Width_;
+  Shape21.Height:=LED_UnwindExitRailUnlockOS.Height_;
+  Shape21.Hint:=LED_UnwindExitRailUnlockOS.Name;
 
-  Shape24.Pen.Color:=LED_UnwindExitRailLockOS.Pen_Color;
-  Shape24.Width:=LED_UnwindExitRailLockOS.Width_;
-  Shape24.Height:=LED_UnwindExitRailLockOS.Height_;
-  Shape24.Hint:=LED_UnwindExitRailLockOS.Name;
+  Shape22.Pen.Color:=LED_UnwindExitRailLockOS.Pen_Color;
+  Shape22.Width:=LED_UnwindExitRailLockOS.Width_;
+  Shape22.Height:=LED_UnwindExitRailLockOS.Height_;
+  Shape22.Hint:=LED_UnwindExitRailLockOS.Name;
 
-  Shape21.Pen.Color:=LED_UnwindExitRailUnlockDS.Pen_Color;
-  Shape21.Width:=LED_UnwindExitRailUnlockDS.Width_;
-  Shape21.Height:=LED_UnwindExitRailUnlockDS.Height_;
-  Shape21.Hint:=LED_UnwindExitRailUnlockDS.Name;
+  Shape23.Pen.Color:=LED_UnwindExitRailUnlockDS.Pen_Color;
+  Shape23.Width:=LED_UnwindExitRailUnlockDS.Width_;
+  Shape23.Height:=LED_UnwindExitRailUnlockDS.Height_;
+  Shape23.Hint:=LED_UnwindExitRailUnlockDS.Name;
 
-  Shape22.Pen.Color:=LED_UnwindExitRailLockDS.Pen_Color;
-  Shape22.Width:=LED_UnwindExitRailLockDS.Width_;
-  Shape22.Height:=LED_UnwindExitRailLockDS.Height_;
-  Shape22.Hint:=LED_UnwindExitRailLockDS.Name;
+  Shape24.Pen.Color:=LED_UnwindExitRailLockDS.Pen_Color;
+  Shape24.Width:=LED_UnwindExitRailLockDS.Width_;
+  Shape24.Height:=LED_UnwindExitRailLockDS.Height_;
+  Shape24.Hint:=LED_UnwindExitRailLockDS.Name;
 
   Shape32.Pen.Color:=LED_UnwindCompleteChuck.Pen_Color;
   Shape32.Width:=LED_UnwindCompleteChuck.Width_;
@@ -758,6 +784,12 @@ begin
     exit;
   end;
 
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  Shape33.Visible:=not Shape33.Visible;
+  Shape33.Refresh;
 end;
 
 procedure TForm1.Edit2EditingDone(Sender: TObject);
@@ -820,10 +852,53 @@ begin
   Shape20.Canvas.Polygon(LED_UnwindSafetyLock.Shape_);
 end;
 
+procedure TForm1.Shape21MouseEnter(Sender: TObject);
+var
+  StartX:integer;
+  StartY:integer;
+begin
+  StartX:=50;
+  StartY:=200;
+  ToolTip_Shape01[0] := Point(StartX+30, StartY-65);
+  ToolTip_Shape01[1] := Point(StartX+40, StartY-65);
+  ToolTip_Shape01[2] := Point(StartX+30, StartY-50);
+  ToolTip_Shape01[3] := Point(StartX+20, StartY-50);
+  ToolTip_Shape02[0] := Point(StartX, StartY);
+  ToolTip_Shape02[1] := Point(StartX+35, StartY-50);
+  ToolTip_Shape02[2] := Point(StartX+110, StartY-50);
+  ToolTip_StringXY:=Point(StartX+50, StartY-65);
+  ToolTip_String:=LED_UnwindExitRailUnlockOS.Name;
+  Shape33.Visible:=true;
+end;
+
+procedure TForm1.Shape21MouseLeave(Sender: TObject);
+begin
+  Shape33.Visible:=false;
+end;
+
 procedure TForm1.Shape21Paint(Sender: TObject);
 begin
   Shape21.Canvas.Brush.Color := LED_UnwindExitRailUnlockOS.Status;
   Shape21.Canvas.Polygon(LED_UnwindExitRailUnlockOS.Shape_);
+end;
+
+procedure TForm1.Shape22MouseEnter(Sender: TObject);
+var
+  StartX:integer;
+  StartY:integer;
+begin
+  StartX:=50;
+  StartY:=222;
+  ToolTip_Shape01[0] := Point(StartX+30, StartY-65);
+  ToolTip_Shape01[1] := Point(StartX+40, StartY-65);
+  ToolTip_Shape01[2] := Point(StartX+30, StartY-50);
+  ToolTip_Shape01[3] := Point(StartX+20, StartY-50);
+  ToolTip_Shape02[0] := Point(StartX, StartY);
+  ToolTip_Shape02[1] := Point(StartX+35, StartY-50);
+  ToolTip_Shape02[2] := Point(StartX+110, StartY-50);
+  ToolTip_StringXY:=Point(StartX+50, StartY-65);
+  ToolTip_String:=LED_UnwindExitRailLockOS.Name;
+  Shape33.Visible:=true;
 end;
 
 procedure TForm1.Shape22Paint(Sender: TObject);
@@ -844,16 +919,43 @@ begin
   Shape24.Canvas.Polygon(LED_UnwindExitRailLockDS.Shape_);
 end;
 
+procedure TForm1.Shape32MouseEnter(Sender: TObject);
+var
+  StartX:integer;
+  StartY:integer;
+begin
+  StartX:=64;
+  StartY:=251;
+  ToolTip_Shape01[0] := Point(StartX+30, StartY-65);
+  ToolTip_Shape01[1] := Point(StartX+40, StartY-65);
+  ToolTip_Shape01[2] := Point(StartX+30, StartY-50);
+  ToolTip_Shape01[3] := Point(StartX+20, StartY-50);
+  ToolTip_Shape02[0] := Point(StartX, StartY);
+  ToolTip_Shape02[1] := Point(StartX+35, StartY-50);
+  ToolTip_Shape02[2] := Point(StartX+110, StartY-50);
+  ToolTip_StringXY:=Point(StartX+50, StartY-65);
+  ToolTip_String:=LED_UnwindCompleteChuck.Name;
+  Shape33.Visible:=true;
+end;
+
 procedure TForm1.Shape32Paint(Sender: TObject);
 begin
   Shape32.Canvas.Brush.Color := LED_UnwindCompleteChuck.Status;
   Shape32.Canvas.Polygon(LED_UnwindCompleteChuck.Shape_);
 end;
 
+procedure TForm1.Shape33MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  X_:=X;
+  Y_:=Y;
+end;
+
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
   Timer1.Enabled:=false;
   ElapsedTime := GetTickCount - StartTime;
+
   Application.ProcessMessages;
   repeat
     ElapsedTime := GetTickCount - StartTime;
@@ -889,6 +991,18 @@ begin
       LED_UnwindExitRailLockDS.Paint;
 
       LED_UnwindCompleteChuck.Paint;
+
+
+      if (Shape33.Visible) then
+      begin
+        Shape33.Refresh;
+        Shape33.Canvas.Brush.Color := clGreen;
+        Shape33.Canvas.Polygon(ToolTip_Shape01);
+        Shape33.Canvas.Polyline(ToolTip_Shape02);
+        Shape33.Canvas.Brush.Color := clNone;
+        Shape33.Canvas.TextOut(30,30,X_.ToString+':'+Y_.ToString);
+        Shape33.Canvas.TextOut(ToolTip_StringXY.X,ToolTip_StringXY.Y,ToolTip_String);
+      end;
 
       StartTime := GetTickCount;
     end;

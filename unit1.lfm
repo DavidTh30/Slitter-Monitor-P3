@@ -199,7 +199,8 @@ object Form1: TForm1
         Width = 16
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape11MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape11Paint
       end
       object Shape12: TShape
@@ -209,7 +210,8 @@ object Form1: TForm1
         Width = 16
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape12MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape12Paint
       end
       object Shape13: TShape
@@ -219,7 +221,8 @@ object Form1: TForm1
         Width = 16
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape13MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape15Paint
       end
       object Shape14: TShape
@@ -229,7 +232,8 @@ object Form1: TForm1
         Width = 16
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape14MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape16Paint
       end
       object Shape15: TShape
@@ -239,7 +243,8 @@ object Form1: TForm1
         Width = 16
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape15MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape15Paint
       end
       object Shape16: TShape
@@ -249,7 +254,8 @@ object Form1: TForm1
         Width = 16
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape16MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape16Paint
       end
       object Shape18: TShape
@@ -265,7 +271,8 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape19MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape19Paint
       end
       object Shape20: TShape
@@ -275,7 +282,8 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape20MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape20Paint
       end
       object Shape21: TShape
@@ -307,7 +315,8 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape23MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape23Paint
       end
       object Shape24: TShape
@@ -317,7 +326,8 @@ object Form1: TForm1
         Width = 12
         ParentShowHint = False
         Shape = stPolygon
-        ShowHint = True
+        OnMouseEnter = Shape24MouseEnter
+        OnMouseLeave = Shape21MouseLeave
         OnPaint = Shape24Paint
       end
       object Label1: TLabel
